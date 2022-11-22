@@ -1,6 +1,7 @@
 package cl.agroup.web.models;
 
 import java.util.Date;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,12 +15,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-
 import org.springframework.format.annotation.DateTimeFormat;
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
+@Getter
+@Setter
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 @Table (name="registrosTotales")
 public class RegistroTotal {
 	@Id
@@ -48,58 +56,6 @@ public class RegistroTotal {
 	@OneToMany(mappedBy = "registroTotal",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	private List<Terreno> terrenos;
 
-	public RegistroTotal() {
-		super();
-	}
-
-	public RegistroTotal(Long id, Date fecha, Date createdAt, Date updatedAt, Usuario usuario) {
-		super();
-		this.id = id;
-		this.fecha = fecha;
-		this.createdAt = createdAt;
-		this.updatedAt = updatedAt;
-		this.usuario = usuario;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public Date getFecha() {
-		return fecha;
-	}
-
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
-	}
-
-	public Date getCreatedAt() {
-		return createdAt;
-	}
-
-	public void setCreatedAt(Date createdAt) {
-		this.createdAt = createdAt;
-	}
-
-	public Date getUpdatedAt() {
-		return updatedAt;
-	}
-
-	public void setUpdatedAt(Date updatedAt) {
-		this.updatedAt = updatedAt;
-	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
 
 	
 }
