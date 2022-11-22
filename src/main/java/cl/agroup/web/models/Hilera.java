@@ -1,11 +1,20 @@
 package cl.agroup.web.models;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name="hileras")
@@ -17,14 +26,32 @@ public class Hilera {
 	@NotNull
 	private String nombreHilera;
 	@NotNull
-	private String terrenoId;
-	@NotNull
-	private String categoriaId;
-	@NotNull
-	private String supervisorId;
+	private String descripcionHilera;
+
 	
+	//ManyToOne de Hilera proveniente de Terrenos
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name="terreno_id")
+	private Terreno terreno;
+	
+	//One to Many para Categorías
+	@JsonIgnore
+	@OneToMany(mappedBy = "hilera",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+	private List<Categoria> categorias;
+
 	public Hilera() {
 		super();
+	}
+
+	public Hilera(Long id, @NotNull String nombreHilera, @NotNull String descripcionHilera, Terreno terreno,
+			List<Categoria> categorias) {
+		super();
+		this.id = id;
+		this.nombreHilera = nombreHilera;
+		this.descripcionHilera = descripcionHilera;
+		this.terreno = terreno;
+		this.categorias = categorias;
 	}
 
 	public Long getId() {
@@ -43,27 +70,30 @@ public class Hilera {
 		this.nombreHilera = nombreHilera;
 	}
 
-	public String getTerrenoId() {
-		return terrenoId;
+	public String getDescripcionHilera() {
+		return descripcionHilera;
 	}
 
-	public void setTerrenoId(String terrenoId) {
-		this.terrenoId = terrenoId;
+	public void setDescripcionHilera(String descripcionHilera) {
+		this.descripcionHilera = descripcionHilera;
 	}
 
-	public String getCategoriaId() {
-		return categoriaId;
+	public Terreno getTerreno() {
+		return terreno;
 	}
 
-	public void setCategoriaId(String categoriaId) {
-		this.categoriaId = categoriaId;
+	public void setTerreno(Terreno terreno) {
+		this.terreno = terreno;
 	}
 
-	public String getSupervisorId() {
-		return supervisorId;
+	public List<Categoria> getCategorias() {
+		return categorias;
 	}
 
-	public void setSupervisorId(String supervisorId) {
-		this.supervisorId = supervisorId;
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
 	}
+	
+
+
 }
