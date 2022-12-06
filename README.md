@@ -1,7 +1,8 @@
 # ¡Bienvenido al repositorio del proyecto AgroUp! :package: :tractor:
 
 
-![](https://graphicsfamily.com/wp-content/uploads/edd/2021/08/Free-Farm-Logo-Vector-Agriculture-Logo-Template-PNG-Transparent.png){width='10px'}
+[logo-agroup-web](https://user-images.githubusercontent.com/103545257/206016487-e2020fa4-892d-466b-a696-a8df4fd7f5f7.png)
 
 
-Proyecto del equipo TakeFive, incluye Java Springboot, API, conexión con base de datos Mysql, y más..
+Proyecto del equipo TakeFive, incluye Java Springboot, API!
+, conexión con base de datos Mysql, y más..
