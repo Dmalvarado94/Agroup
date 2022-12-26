@@ -1,0 +1,22 @@
+.App {
+    display: grid;
+    height: 100vh;
+    width: 100%;
+    grid-template-rows: 2fr 8fr;
+  
+    .app-nav{
+      
+    }
+  
+    .main-container{
+      display: grid;
+      grid-template-columns: 2fr 8fr;
+      height: 100%;
+      background-color: #F9F9F9;
+    }
+  
+    .app-side{
+      height: 100%;
+      
+    }
+  }

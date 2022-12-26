@@ -26,7 +26,9 @@ public class Rol {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@JsonIgnore
 	private String nombre;
+	@JsonIgnore
 	private String descripcion;
 
 	// ManyToMany rol

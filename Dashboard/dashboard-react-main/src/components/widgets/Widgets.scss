@@ -1,0 +1,32 @@
+.widgets{
+    display: flex;
+    padding: 5px;
+    justify-content: space-around;
+    align-items: center;
+
+    .widgetCard{
+        width: 250px;
+        height: 183px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        color: #034C3D;
+        background-color: #F9F9F9;
+        border-bottom: 0.5px solid blueviolet;
+        border-radius: 20px;
+        margin-bottom: 20px;
+
+        .lado-izquierdo{
+            justify-content: center;
+            margin-right: 100px;
+            margin-left: 20px;
+            align-self: center;
+        }
+
+        .lado-derecho{
+            background-color: #F9F9F9;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+.tareas {
+    background-color: white;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+
+
+    .tareas-container{
+        background-color: #F9F9F9;
+        width: 100%;
+        justify-content: space-around;
+        align-content: center;
+    }
+
+    .tareas-componente {
+        display: flex;
+        flex-direction: column;
+        width: 80%;
+        height: 100%;
+
+        .listasTareas{
+            display: flex;
+        }
+        
+    }
+
+}

@@ -1,0 +1,86 @@
+.navbar{
+    height: 100px;
+    
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color:  #828282;
+    width: 100%;
+    background-color: #F9F9F9;
+    margin-bottom: 20px;
+
+    .wrapper{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 20px;
+        justify-content: space-between;
+        border-bottom: 0.5px solid blueviolet;
+
+        
+
+        .logo{
+            height: 50px;
+             
+            margin-left: 20px;
+        }
+
+        .bienvenido{
+
+            display: grid;
+
+
+            .bienvenido-title{
+                font-weight: bold;
+                color:  #034c3d;
+            }
+
+            .bienvenido-correo{
+                font-size: smaller;
+            }
+        }
+
+
+        .search{
+            display: flex;
+            align-items: center;
+            border: 0.5px solid lightgray;
+            padding: 5px;
+
+            input{
+                border: none;
+                outline: none;
+                background-color: transparent;
+
+                &::placeholder{
+                    font-size: 12px;
+                }
+            }
+
+            
+
+        }
+
+
+        .items {
+            display: flex;
+            align-items: center;
+
+            .item{
+                display: flex;
+                align-items: center;
+                margin-right: 20px;
+
+                .icon{
+                    font-size: 20px;
+                }
+
+                .avatar{
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 50%;
+                }
+            }
+        }
+    }
+}

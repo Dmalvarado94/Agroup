@@ -4,7 +4,9 @@ import java.util.List;
 
 import cl.agroup.web.models.Usuario;
 
-public interface UsuarioService {
+public interface UsuarioService { 
+	
+
 	
 	// Aquí definimos métodos
 	
@@ -17,6 +19,4 @@ public interface UsuarioService {
 	// Login
 	
 	public Boolean ingresoUsuario(String email, String password);
-
-
 }

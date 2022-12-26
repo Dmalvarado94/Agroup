@@ -46,27 +46,28 @@ public class Usuario {
 	private String nombre;
 	@NotNull
 	private String apellido;
-	@NotNull
+	
 	private int edad;
-	@NotNull
+	
 	private String genero;
-	@NotNull
+	
 	private String correo;
-	@NotNull
+	
 	private String password;
 	@Transient
 	private String password2;
-	@NotNull
+	
 	private int telefono; 
 	//ManyToOne de Empresa
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="empresa_id")
 	private Empresa empresa;
 	
 	// Relacion ManytoMany proveniente de roles
 
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JsonIgnore
 	@JoinTable(name = "roles_usuarios", // nombre de la tabla relacional
 			joinColumns = @JoinColumn(name = "usuario_id"), inverseJoinColumns = @JoinColumn(name = "rol_id"))
 	private List<Rol> roles;
