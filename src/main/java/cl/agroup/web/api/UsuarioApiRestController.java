@@ -11,10 +11,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import cl.agroup.web.models.Usuario;
 import cl.agroup.web.services.UsuarioServicesImpl;
+
 
 
 @RequestMapping("/api3")
@@ -28,7 +29,7 @@ public class UsuarioApiRestController {
 	public String guardarUsuario(@RequestBody Usuario usuario) {
 		 /*
 		 * {
-		 * nombre:"Mijail",
+		 * nombre:"Dani",
 		 * correo:"a@a.cl",
 		 * password: "secret"
 		 * }
@@ -41,10 +42,12 @@ public class UsuarioApiRestController {
 		}
 	}
 	
-	@RequestMapping("/eliminar/usuario")
-	public String eliminarUsuario(@RequestParam(value = "id", required = false) Long id){
-		// Aqui llamamos al metodo eliminar en el servicio
-		return usuarioServicesImpl.eliminarUsuario(id);
+	@RequestMapping(value = "/eliminar/usuario", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody List<Usuario> eliminarUsuario(@RequestParam(value="id",required = false) Long id) {
+		
+		usuarioServicesImpl.eliminarUsuario(id);
+		
+		return usuarioServicesImpl.obtenerListaUsuarios();
 	}
 	
 	@RequestMapping("/actualizar/usuario")
