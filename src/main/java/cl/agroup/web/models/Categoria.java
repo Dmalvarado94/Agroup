@@ -23,6 +23,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+
 @Getter
 @Setter
 @Entity
@@ -35,14 +36,16 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
+    
     private String nombreCategoria;
-    @NotNull
+    
     private Long valorCaja;
+    
+    private Long cantidadCajas;
 
     //ManyToOne de Categoria proveniente de Hileras
         @JsonIgnore
-        @ManyToOne(fetch = FetchType.EAGER)
+        @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name="hilera_id")
         private Hilera hilera;
 

@@ -13,4 +13,5 @@ public interface CategoriaService {
 	public String actualizarCategoria(Categoria categoria);
 	public Categoria obtenerCategoria(Long id);
 	public List<Categoria> listaCategoria();
+	Categoria editarCategoria(Long id, Categoria categoria);
 }

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +18,7 @@ import cl.agroup.web.services.UsuarioServicesImpl;
 
 
 
+
 @RequestMapping("/api3")
 @RestController
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST})
@@ -25,6 +26,7 @@ public class UsuarioApiRestController {
 	
 	@Autowired
 	private UsuarioServicesImpl usuarioServicesImpl;
+	
 	@RequestMapping(value = "/guardar/usuario", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
 	public String guardarUsuario(@RequestBody Usuario usuario) {
 		 /*
@@ -42,22 +44,24 @@ public class UsuarioApiRestController {
 		}
 	}
 	
-	@RequestMapping(value = "/eliminar/usuario", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody List<Usuario> eliminarUsuario(@RequestParam(value="id",required = false) Long id) {
+	@RequestMapping(value = "/eliminar/usuario", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody String eliminarUsuario(@RequestParam(value="id",required = false) Long id) {
 		
 		usuarioServicesImpl.eliminarUsuario(id);
 		
-		return usuarioServicesImpl.obtenerListaUsuarios();
+		return usuarioServicesImpl.eliminarUsuario(id);
 	}
 	
-	@RequestMapping("/actualizar/usuario")
-	public String actualizarUsuario(@RequestBody Usuario usuario) {
-		if (usuario.getId()!=null) {
-			String mensaje = usuarioServicesImpl.actualizarUsuario(usuario);
-			return mensaje;
-		}
-		return "No se actualizará ningun usuario";
-	}
+	@PutMapping("/actualizar/usuario")
+    public String actualizarUsuario(@RequestBody Usuario usuario) {
+        if (usuario.getId()!=null) {
+            String mensaje = usuarioServicesImpl.actualizarUsuario(usuario);
+            return mensaje;
+        }
+        return "No se actualizará ningun usuario";
+    }
+	
+
 	
 	@RequestMapping("/obtener/usuario")
 	public Usuario obtenerUsuario(@RequestParam(value="id",required = true) Long id){
